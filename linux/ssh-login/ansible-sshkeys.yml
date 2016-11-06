@@ -1,0 +1,30 @@
+# Creates SSH keys for the current user and pushes them out
+# to all hosts.
+#
+# Usage:
+# $ ansbile-playbook -i hosts ansible-sshkeys.yml --ask-pass
+#
+
+---
+
+- hosts: all
+  
+  tasks:
+    - name: check to see if keys are generated already
+      local_action: stat path=~/.ssh/id_rsa
+      register: rsakey
+
+    - name: create rsa public and private keys
+      local_action: shell ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -C " -N "
+      when: rsakey.stat.exists == false
+
+    - name: copy public key to remote hosts
+      copy: src=~/.ssh/id_rsa.pub dest=~/.ssh/id_rsa.tmp
+
+    - name: add public key to authorized keys
+      shell: cat ~/.ssh/id_rsa.tmp >> ~/.ssh/authorized_keys
+      
+    - name: remove temporary public key file
+      file: path=~/.ssh/id_rsa.tmp state=absent
+
+      
