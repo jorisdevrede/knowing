@@ -11,7 +11,7 @@ Requires:
  - limiting work in process
  - building safe systems that are resilient to change
 
-### 2. amplified feedback
+### 2. amplify feedback
 (right-to-left) By providing constant feedback at every step, enabling faster detection and making sure problems do not happen again.
 
 Requires:
