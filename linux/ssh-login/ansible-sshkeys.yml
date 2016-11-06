@@ -2,7 +2,7 @@
 # to all hosts.
 #
 # Usage:
-# $ ansbile-playbook -i hosts ansible-sshkeys.yml --ask-pass
+# $ ansible-playbook -i hosts ansible-sshkeys.yml --ask-pass
 #
 
 ---
