@@ -1,7 +1,7 @@
 # Branching
 
 ## Prerequisites
-1. Configure git
+a. Configure git
 ```
 git config --global user.name "[full name]"
 git config --global user.email [email]
@@ -9,7 +9,7 @@ git config --global core.editor vi
 git config --global push.default simple
 ```
 
-2. Clone repo to local work environment
+b. Clone repo to local work environment
 ```
 $ git clone [repo URI]
 ```
@@ -21,17 +21,17 @@ $ git clone [repo URI]
 On Github and Bitbucket you can create a new branch using the webinterface. Branch should be named `[issue number]-[issue description]`.
 
 2. Switch to branch
-```
-$ cd [repo]
-$ git checkout [branch-name]
-```
+    ```
+    $ cd [repo]
+    $ git checkout [branch-name]
+    ```
 
 3. Push changes
-```
-$ git add [new files]
-$ git commit
-$ git push
-```
+    ```
+    $ git add [new files]
+    $ git commit
+    $ git push
+    ```
 
 4. Open Pull Request
 On Github and Bitbucket you can open a pull request with the branch as source and the master as destination.
@@ -40,5 +40,6 @@ On Github and Bitbucket you can open a pull request with the branch as source an
 
 
 6. Delete the branch
-```
-$ git push origin --delete [branch-name]
+    ```
+    $ git push origin --delete [branch-name]
+    ```
