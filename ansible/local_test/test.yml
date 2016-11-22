@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+  become: yes
+
+  tasks:
+
+#
+# Runs a play and shows the result in debug.
+#
+
+  - name: do something
+    command: echo 'play should go here'
+    register: result
+
+  - name: check the result
+    debug: var=result
