@@ -1,0 +1,5 @@
+---
+
+- include: service_a.yml
+- include: service_b.yml
+- include: service_c.yml

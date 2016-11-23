@@ -1,0 +1,7 @@
+---
+
+- hosts: service_a
+  
+  roles:
+    - common
+    - service_a
