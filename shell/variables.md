@@ -21,7 +21,7 @@ $ export Variable = "Value"
 
 *Bash*
 ```
-$ export Variable = "Value"
+$ unset Variable
 ```
 
 
