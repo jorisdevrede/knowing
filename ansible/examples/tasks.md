@@ -1,11 +1,12 @@
 ## concatenate hostnames in a group 
 
 ```
-  - name: use the hosts of an inventory group as comma separated list
+  - name: use the hosts of an inventory group as comma separated list with a host:port syntax
     lineinfile:
-      dest=/path/file.config
-      line="hosts={{ groups.groupname | list | join(', ') }}"
-      insertafter=EOF
+      dest: /tmp/testfile
+      regexp: "^{{ groups['tokio'][0] }}"
+      line: "{{ groups['tokio'] | join(':22, ') }}:22"
+      insertafter: EOF
 ```
 
 ## install multiple packages
