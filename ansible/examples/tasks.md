@@ -6,6 +6,7 @@
       dest: /tmp/testfile
       regexp: "^{{ groups['tokio'][0] }}"
       line: "{{ groups['tokio'] | join(':22, ') }}:22"
+      state: present
       insertafter: EOF
 ```
 
