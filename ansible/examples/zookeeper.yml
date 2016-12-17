@@ -1,0 +1,61 @@
+---
+
+- hosts: zookeeper
+  become: yes
+  vars:
+    - zookeeper_version: 3.4.9
+
+  pre_tasks:
+
+  - name: update package cache - apt
+    apt: update_cache=yes
+    when: ansible_pkg_mgr in 'apt'
+
+  - name: install unzip
+    package: name=unzip state=latest
+
+  tasks:
+
+  - name: verify zookeeper symlink
+    stat: path=/opt/zookeeper/default
+    register: zksym
+
+  - name: verify zookeeper version
+    stat: path=/opt/zookeeper/default/zookeeper-{{ zookeeper_version }}.jar
+    register: zkjar
+
+  - name: stop zookeeper
+    command: "/opt/zookeeper/default/bin/zkServer.sh stop"
+    ignore_errors: true
+    when: zksym.stat.exists==true and zkjar.stat.exists==false
+
+  - name: create group
+    group: name=zookeeper state=present
+
+  - name: create zookeeper user
+    user: name=zookeeper state=present group=zookeeper createhome=no system=yes
+  - name: create zookeeper base dir
+    file: path=/opt/zookeeper state=directory owner=zookeeper group=zookeeper mode=0755
+
+  - name: create data dir
+    file: path=/tmp/zookeeper state=directory owner=zookeeper group=zookeeper mode=0755
+
+  - name: unarchive zookeeper
+    unarchive: "src=zookeeper-{{ zookeeper_version }}.tar.gz dest=/opt/zookeeper copy=yes owner=zookeeper group=zookeeper mode=0755"
+    notify: restart zookeeper
+
+  - name: create symlink
+    file: "path=/opt/zookeeper/default state=link src=/opt/zookeeper/zookeeper-{{ zookeeper_version }} owner=zookeeper group=zookeeper mode=0777"
+    notify: restart zookeeper
+
+  - name: copy zoo.cfg
+    copy: src=/opt/zookeeper/default/conf/zoo_sample.cfg dest=/opt/zookeeper/default/conf/zoo.cfg force=no owner=zookeeper group=zookeeper mode=0644
+    notify: restart zookeeper
+
+  handlers:
+
+  - name: restart zookeeper
+    become_user: zookeeper
+    command: /opt/zookeeper/default/bin/zkServer.sh restart
+    args:
+      chdir: /opt/zookeeper/default
