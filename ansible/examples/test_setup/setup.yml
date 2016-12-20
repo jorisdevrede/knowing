@@ -18,7 +18,7 @@
       line: "127.0.0.1       {{ item }}"
       dest: /etc/hosts
       create: yes
-      regexp: "127\\.0\\.0\\.1 {{ item }}"
+      regexp: "127\\.0\\.0\\.1.*{{ item }}"
       insertafter: "^127\\.0\\.1\\.1"
       state: present
     when:  item|match('^[a-z0-9][a-z0-9\-\_]*\..*')
