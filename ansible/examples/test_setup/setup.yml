@@ -1,0 +1,25 @@
+---
+
+# file: [playbook_root]/test_setup/setup.yml
+# Converts the ../hosts/inventory file of the playbook into local /etc/hosts entries
+
+# $ cd test_setup
+# $ ansible-playbook -i hosts setup.yml
+
+- hosts: localhost
+  become: yes
+  tasks:
+
+  # take the inventory relative to the current test subdir.
+  - command: cat ../hosts/production
+    register: lines
+
+  - lineinfile:
+      line: "127.0.0.1       {{ item }}"
+      dest: /etc/hosts
+      create: yes
+      regexp: "127\\.0\\.0\\.1 {{ item }}"
+      insertafter: "^127\\.0\\.1\\.1"
+      state: present
+    when: item|match('^[^[]') and item|match('^[^#]') and item|match('^[a-z0-9]*\..*')
+    with_items: "{{ lines.stdout_lines }}"
