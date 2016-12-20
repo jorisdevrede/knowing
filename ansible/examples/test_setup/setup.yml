@@ -21,5 +21,5 @@
       regexp: "127\\.0\\.0\\.1 {{ item }}"
       insertafter: "^127\\.0\\.1\\.1"
       state: present
-    when: item|match('^[^[]') and item|match('^[^#]') and item|match('^[a-z0-9]*\..*')
+    when:  item|match('(?=^[^[])(?=^[^#])(?=^[a-z0-9]*\..*)')
     with_items: "{{ lines.stdout_lines }}"
