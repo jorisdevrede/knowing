@@ -28,7 +28,7 @@ On Github and Bitbucket you can create a new branch using the webinterface. Bran
 
 3. Push changes
     ```
-    $ git add [new files]
+    $ git add .
     $ git commit
     $ git push
     ```
