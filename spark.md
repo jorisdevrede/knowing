@@ -1,6 +1,5 @@
 ## Configure PyCharm for Spark
 
-
 ### Install pyspark package
 **Using pip**
 
