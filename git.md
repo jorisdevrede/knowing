@@ -39,3 +39,6 @@ On Github and Bitbucket you can open a pull request with the branch as source an
     ```bash
     $ git push origin --delete [branch-name]
     ```
+
+## Github workflow 
+[Github Standard Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
