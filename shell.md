@@ -37,6 +37,9 @@ Or use `sudoedit /etc/sudoers`
 ### Symlink 
 ```bash
 $ ln -sf /path/to/file /path/to/symlink
+
+$ readlink -f /path/to/symlink
+/path/to/file
 ```
 
 ---
