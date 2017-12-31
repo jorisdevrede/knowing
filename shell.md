@@ -38,3 +38,8 @@ Or use `sudoedit /etc/sudoers`
 ```bash
 $ ln -sf /path/to/file /path/to/symlink
 ```
+
+---
+
+### More info
+- [The Bash Guide](http://guide.bash.academy) 
