@@ -23,6 +23,11 @@ Powershell: `Remove-Item env:\var`
 Bash:`env`<br/>
 Powershell: `dir env:`
 
+---
+### Linux release
+```bash
+$ lsb_release -a
+```
 
 ---
 
