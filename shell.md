@@ -45,4 +45,5 @@ $ readlink -f /path/to/symlink
 ---
 
 ### More info
-- [The Bash Guide](http://guide.bash.academy) 
+- [The Bash Guide](http://guide.bash.academy)
+- [Upstart vs Systemd commands](https://unix.stackexchange.com/questions/5877/what-are-the-pros-cons-of-upstart-and-systemd)
