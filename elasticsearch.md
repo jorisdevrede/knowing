@@ -2,7 +2,7 @@
 
 - maximum shard size ~50GB
 - maximum shard count per node: depends on heap. estimate: 30GB heap = max 600 - 750 shards
-
+- an index with less shards is faster to query
 - larger segments have less overhead than smaller segments
 ```
 http://master:9200/index/_forcemerge?max_num_segments=1
