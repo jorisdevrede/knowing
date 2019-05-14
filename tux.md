@@ -10,23 +10,22 @@ Use this to set for all users. Can combine environment variables with other scri
 3. `~/.bash_profile` or `~/.bashrc`<br/>
 Use this for a single user. Can combine environment variables with other scripting.
 
+```bash
+#Create
+$ export var='value'
 
-#### Create
-Bash:`export var='value'`<br/>
-Powershell: `$env:var = "value"`
+#Delete
+$ unset var
 
-#### Delete
-Bash:`unset var`<br/>
-Powershell: `Remove-Item env:\var`
-
-#### List
-Bash:`env`<br/>
-Powershell: `dir env:`
-
+#List
+$ env
+```
 ---
 ### Linux release
 ```bash
 $ lsb_release -a
+or
+$ cat /etc/lsb-release
 ```
 
 ---
