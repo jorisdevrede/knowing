@@ -7,6 +7,7 @@ git config --global user.name "[full name]"
 git config --global user.email [email]
 git config --global core.editor vi
 git config --global push.default simple
+git config --global credential.helper cache
 ```
 b. Clone repo to local work environment
 ```bash
